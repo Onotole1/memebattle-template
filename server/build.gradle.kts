@@ -10,11 +10,7 @@ application {
 }
 
 group = "ru.memebattle"
-version =" 1.0-SNAPSHOT"
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-}
+version = " 1.0-SNAPSHOT"
 
 tasks.withType<Test> {
     useJUnitPlatform()
@@ -43,16 +39,15 @@ dependencies {
     testImplementation("io.ktor:ktor-server-tests:1.2.4")
     testImplementation("com.jayway.jsonpath:json-path:2.4.0")
     testImplementation("org.junit.jupiter:junit-jupiter:5.6.0")
+    implementation(project(":shared-dto"))
 }
 
 tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-allprojects {
-    repositories {
-        jcenter()
-    }
+repositories {
+    jcenter()
 }
 
 tasks.register("stage") {

@@ -14,6 +14,7 @@ import ru.memebattle.dto.AuthenticationRequestDto
 import ru.memebattle.dto.PostRequestDto
 import ru.memebattle.dto.UserRegisterRequestDto
 import ru.memebattle.dto.UserResponseDto
+import ru.memebattle.model.toDto
 import ru.memebattle.service.FileService
 import ru.memebattle.service.PostService
 import ru.memebattle.service.UserService
@@ -48,7 +49,7 @@ class RoutingV1(
                 authenticate(BasicAuth.NAME, JwtAuth.NAME) {
                     route("/me") {
                         get {
-                            call.respond(UserResponseDto.fromModel(requireNotNull(me)))
+                            call.respond(requireNotNull(me).toDto())
                         }
                     }
 

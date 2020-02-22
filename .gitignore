@@ -29,3 +29,4 @@
 /database
 /uploads
 **/build
+/local.properties

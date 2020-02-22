@@ -17,7 +17,11 @@ class PostService(private val repo: PostRepository) {
     }
 
     suspend fun save(input: PostRequestDto): PostResponseDto {
-        val model = PostModel(id = input.id, author = input.author, content = input.content)
+        val model = PostModel(
+            id = input.id,
+            author = input.author,
+            content = input.content
+        )
         return PostResponseDto.fromModel(repo.save(model))
     }
 }

@@ -9,6 +9,7 @@ import ru.memebattle.exception.InvalidPasswordException
 import ru.memebattle.exception.PasswordChangeException
 import ru.memebattle.exception.UserExistsException
 import ru.memebattle.model.UserModel
+import ru.memebattle.model.toDto
 import ru.memebattle.repository.UserRepository
 
 class UserService(
@@ -28,7 +29,7 @@ class UserService(
 
     suspend fun getById(id: Long): UserResponseDto {
         val model = repo.getById(id) ?: throw NotFoundException()
-        return UserResponseDto.fromModel(model)
+        return model.toDto()
     }
 
     suspend fun changePassword(id: Long, input: PasswordChangeRequestDto): UserModel =
