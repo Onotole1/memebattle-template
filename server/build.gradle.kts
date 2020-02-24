@@ -39,7 +39,7 @@ dependencies {
     testImplementation("io.ktor:ktor-server-tests:1.2.4")
     testImplementation("com.jayway.jsonpath:json-path:2.4.0")
     testImplementation("org.junit.jupiter:junit-jupiter:5.6.0")
-    implementation(project(":shared-dto"))
+    implementation(project(":common"))
 }
 
 tasks.withType<Test> {

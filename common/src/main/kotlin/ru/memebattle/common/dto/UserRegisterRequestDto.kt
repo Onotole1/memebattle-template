@@ -1,4 +1,4 @@
-package ru.memebattle.dto
+package ru.memebattle.common.dto
 
 data class UserRegisterRequestDto(
     val username: String,

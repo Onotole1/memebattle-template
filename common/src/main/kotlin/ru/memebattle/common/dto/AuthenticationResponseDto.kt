@@ -1,3 +1,3 @@
-package ru.memebattle.dto
+package ru.memebattle.common.dto
 
 data class AuthenticationResponseDto(val token: String)

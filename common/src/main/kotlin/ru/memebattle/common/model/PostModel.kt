@@ -1,4 +1,4 @@
-package ru.memebattle.model
+package ru.memebattle.common.model
 
 data class PostModel(
     val id: Long,

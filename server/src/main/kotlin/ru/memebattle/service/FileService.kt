@@ -11,8 +11,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.apache.tika.metadata.Metadata
 import org.apache.tika.parser.AutoDetectParser
-import ru.memebattle.dto.MediaResponseDto
-import ru.memebattle.model.MediaType
+import ru.memebattle.common.dto.MediaResponseDto
+import ru.memebattle.common.model.MediaType
 import java.io.BufferedInputStream
 import java.nio.file.Files
 import java.nio.file.Paths

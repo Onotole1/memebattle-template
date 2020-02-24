@@ -1,9 +1,9 @@
 package ru.memebattle.service
 
 import io.ktor.features.NotFoundException
-import ru.memebattle.dto.PostRequestDto
-import ru.memebattle.dto.PostResponseDto
-import ru.memebattle.model.PostModel
+import ru.memebattle.common.dto.PostRequestDto
+import ru.memebattle.common.dto.PostResponseDto
+import ru.memebattle.common.model.PostModel
 import ru.memebattle.repository.PostRepository
 
 class PostService(private val repo: PostRepository) {

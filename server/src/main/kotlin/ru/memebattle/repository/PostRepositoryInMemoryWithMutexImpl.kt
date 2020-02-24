@@ -2,7 +2,7 @@ package ru.memebattle.repository
 
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import ru.memebattle.model.PostModel
+import ru.memebattle.common.model.PostModel
 
 class PostRepositoryInMemoryWithMutexImpl : PostRepository {
     private var nextId = 1L

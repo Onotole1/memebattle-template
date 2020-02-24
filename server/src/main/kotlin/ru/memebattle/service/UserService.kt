@@ -4,6 +4,10 @@ import io.ktor.features.NotFoundException
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import org.springframework.security.crypto.password.PasswordEncoder
+import ru.memebattle.common.dto.AuthenticationRequestDto
+import ru.memebattle.common.dto.AuthenticationResponseDto
+import ru.memebattle.common.dto.PasswordChangeRequestDto
+import ru.memebattle.common.dto.UserResponseDto
 import ru.memebattle.dto.*
 import ru.memebattle.exception.InvalidPasswordException
 import ru.memebattle.exception.PasswordChangeException

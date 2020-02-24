@@ -10,10 +10,9 @@ import io.ktor.response.respond
 import io.ktor.routing.*
 import ru.memebattle.auth.BasicAuth
 import ru.memebattle.auth.JwtAuth
-import ru.memebattle.dto.AuthenticationRequestDto
-import ru.memebattle.dto.PostRequestDto
-import ru.memebattle.dto.UserRegisterRequestDto
-import ru.memebattle.dto.UserResponseDto
+import ru.memebattle.common.dto.AuthenticationRequestDto
+import ru.memebattle.common.dto.PostRequestDto
+import ru.memebattle.common.dto.UserRegisterRequestDto
 import ru.memebattle.model.toDto
 import ru.memebattle.service.FileService
 import ru.memebattle.service.PostService

@@ -1,6 +1,6 @@
 package ru.memebattle.repository
 
-import ru.memebattle.model.PostModel
+import ru.memebattle.common.model.PostModel
 
 interface PostRepository {
     suspend fun getAll(): List<PostModel>

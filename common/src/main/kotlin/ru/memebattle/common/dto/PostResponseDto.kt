@@ -1,7 +1,7 @@
-package ru.memebattle.dto
+package ru.memebattle.common.dto
 
-import ru.memebattle.model.PostModel
-import ru.memebattle.model.PostType
+import ru.memebattle.common.model.PostModel
+import ru.memebattle.common.model.PostType
 
 data class PostResponseDto(
     val id: Long,

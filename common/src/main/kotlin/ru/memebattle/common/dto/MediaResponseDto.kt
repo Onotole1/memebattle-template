@@ -1,7 +1,7 @@
-package ru.memebattle.dto
+package ru.memebattle.common.dto
 
-import ru.memebattle.model.MediaModel
-import ru.memebattle.model.MediaType
+import ru.memebattle.common.model.MediaModel
+import ru.memebattle.common.model.MediaType
 
 data class MediaResponseDto(val id: String, val mediaType: MediaType) {
     companion object {
