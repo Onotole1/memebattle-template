@@ -13,6 +13,7 @@ class DatabaseCreator(private val path: String?) {
             JdbcSqliteDriver.IN_MEMORY
         } else {
             if (Files.notExists(Paths.get(path))) {
+                Files.createDirectories(Paths.get(path).parent)
                 Files.createFile(Paths.get(path))
             }
 
