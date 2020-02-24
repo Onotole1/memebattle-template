@@ -1,1 +1,1 @@
-web: ./build/install/memebattle-api/bin/memebattle-api
+web: ./server/build/install/server/bin/server
