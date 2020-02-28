@@ -1,26 +1,43 @@
 package ru.memebattle.repository
 
-import kotlinx.coroutines.sync.Mutex
-import ru.memebattle.db.data.toModel
+import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.select
+import ru.memebattle.db.data.Users
+import ru.memebattle.db.data.toUser
+import ru.memebattle.db.dbQuery
 import ru.memebattle.model.UserModel
-import ru.memebattle.sqldelight.data.User
-import ru.memebattle.sqldelight.data.UserQueries
 
-class UserRepositoryImpl(private val userQueries: UserQueries) : UserRepository {
-    private var nextId = 1L
-    private val items = mutableListOf<UserModel>()
-    private val mutex = Mutex()
+class UserRepositoryImpl : UserRepository {
 
     override suspend fun getById(id: Long): UserModel? =
-        userQueries.selectUserById(id).executeAsOneOrNull()?.let(User::toModel)
+        dbQuery {
+            Users.select {
+                (Users.id eq id)
+            }.firstOrNull()?.toUser()
+        }
 
     override suspend fun getByIds(ids: Collection<Long>): List<UserModel> =
-        userQueries.selectUsersByIds(ids).executeAsList().map(User::toModel)
+        dbQuery {
+            Users.select {
+                (Users.id inList ids)
+            }.map{
+                it.toUser()
+            }
+        }
 
     override suspend fun getByUsername(username: String): UserModel? =
-        userQueries.selectUserByName(username).executeAsOneOrNull()?.let(User::toModel)
+        dbQuery {
+            Users.select {
+                (Users.username eq username)
+            }.firstOrNull()?.toUser()
+        }
 
     override suspend fun save(item: UserModel): Unit =
-        userQueries.insertUser(item.username, item.password)
+        dbQuery {
+            Users.insert { insertStatement ->
+                insertStatement[password] = item.password
+                insertStatement[username] = item.username
+            }
+        }
 }
 

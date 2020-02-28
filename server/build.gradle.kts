@@ -1,8 +1,31 @@
 plugins {
-    id("java")
     id("org.jetbrains.kotlin.jvm")
-    id("com.squareup.sqldelight")
+    id("org.flywaydb.flyway") version "5.2.4"
+    id("java")
     application
+}
+
+flyway {
+    url = System.getenv("DB_URL")
+    user = System.getenv("DB_USER")
+    password = System.getenv("DB_PASSWORD")
+    baselineOnMigrate = true
+    locations = arrayOf("filesystem:resources/db/migration")
+}
+
+val compileKotlin: org.jetbrains.kotlin.gradle.tasks.KotlinCompile by tasks
+val compileTestKotlin: org.jetbrains.kotlin.gradle.tasks.KotlinCompile by tasks
+
+compileKotlin.kotlinOptions {
+    jvmTarget = "1.8"
+}
+compileTestKotlin.kotlinOptions {
+    jvmTarget = "1.8"
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 application {
@@ -14,13 +37,6 @@ version = "1.0-SNAPSHOT"
 
 tasks.withType<Test> {
     useJUnitPlatform()
-}
-
-sqldelight {
-    database("Database") {
-        packageName = "ru.memebattle"
-        sourceFolders = listOf("sqldelight")
-    }
 }
 
 dependencies {
@@ -36,6 +52,10 @@ dependencies {
     implementation("org.kodein.di:kodein-di-framework-ktor-server-jvm:6.3.3")
     implementation("com.squareup.sqldelight:sqlite-driver:1.2.2")
     implementation("org.apache.tika:tika-parsers:1.11")
+    implementation("org.jetbrains.exposed:exposed:0.12.1")
+    implementation("com.zaxxer:HikariCP:2.7.8")
+    implementation("org.postgresql:postgresql:42.2.2")
+    implementation("org.flywaydb:flyway-core:5.2.4")
     testImplementation("io.ktor:ktor-server-tests:1.2.4")
     testImplementation("com.jayway.jsonpath:json-path:2.4.0")
     testImplementation("org.junit.jupiter:junit-jupiter:5.6.0")
