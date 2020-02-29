@@ -3,6 +3,7 @@ package ru.memebattle.route
 import io.ktor.application.call
 import io.ktor.auth.authenticate
 import io.ktor.features.ParameterConversionException
+import io.ktor.http.HttpStatusCode
 import io.ktor.http.content.*
 import io.ktor.request.receive
 import io.ktor.request.receiveMultipart
@@ -12,17 +13,21 @@ import ru.memebattle.auth.BasicAuth
 import ru.memebattle.auth.JwtAuth
 import ru.memebattle.common.dto.AuthenticationRequestDto
 import ru.memebattle.common.dto.PostRequestDto
+import ru.memebattle.common.dto.schdule.ScheduleDayDto
+import ru.memebattle.common.dto.schdule.ScheduleDayRequestDto
 import ru.memebattle.common.dto.user.UserRegisterRequestDto
 import ru.memebattle.model.toDto
 import ru.memebattle.service.FileService
 import ru.memebattle.service.PostService
+import ru.memebattle.service.ScheduleService
 import ru.memebattle.service.UserService
 
 class RoutingV1(
     private val staticPath: String,
     private val postService: PostService,
     private val fileService: FileService,
-    private val userService: UserService
+    private val userService: UserService,
+    private val scheduleService: ScheduleService
 ) {
     fun setup(configuration: Routing) {
         with(configuration) {
@@ -75,6 +80,18 @@ class RoutingV1(
                                 "id",
                                 "Long"
                             )
+                        }
+                    }
+
+                    route("/schedule") {
+                        get {
+                            val response = scheduleService.getAll()
+                            call.respond(response)
+                        }
+                        post {
+                            val input = call.receive<ScheduleDayRequestDto>()
+                            val response = scheduleService.insert(input)
+                            call.respond(HttpStatusCode.OK)
                         }
                     }
                 }

@@ -2,8 +2,8 @@ package ru.memebattle.repository
 
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
-import ru.memebattle.db.data.Users
-import ru.memebattle.db.data.toUser
+import ru.memebattle.db.data.user.Users
+import ru.memebattle.db.data.user.toUser
 import ru.memebattle.db.dbQuery
 import ru.memebattle.model.UserModel
 
@@ -13,14 +13,14 @@ class UserRepositoryImpl : UserRepository {
         dbQuery {
             Users.select {
                 (Users.id eq id)
-            }.firstOrNull()?.toUser()
+            }.singleOrNull()?.toUser()
         }
 
     override suspend fun getByIds(ids: Collection<Long>): List<UserModel> =
         dbQuery {
             Users.select {
                 (Users.id inList ids)
-            }.map{
+            }.map {
                 it.toUser()
             }
         }
@@ -29,7 +29,7 @@ class UserRepositoryImpl : UserRepository {
         dbQuery {
             Users.select {
                 (Users.username eq username)
-            }.firstOrNull()?.toUser()
+            }.singleOrNull()?.toUser()
         }
 
     override suspend fun save(item: UserModel): Unit =

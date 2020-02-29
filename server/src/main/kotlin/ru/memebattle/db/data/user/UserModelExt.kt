@@ -1,4 +1,4 @@
-package ru.memebattle.db.data
+package ru.memebattle.db.data.user
 
 import org.jetbrains.exposed.sql.ResultRow
 import ru.memebattle.model.UserModel

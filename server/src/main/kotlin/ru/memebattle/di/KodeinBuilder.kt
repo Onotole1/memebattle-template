@@ -12,15 +12,9 @@ import ru.memebattle.auth.BasicAuth
 import ru.memebattle.auth.JwtAuth
 import ru.memebattle.db.data.DatabaseFactory
 import ru.memebattle.exception.ConfigurationException
-import ru.memebattle.repository.PostRepository
-import ru.memebattle.repository.PostRepositoryInMemoryWithMutexImpl
-import ru.memebattle.repository.UserRepository
-import ru.memebattle.repository.UserRepositoryImpl
+import ru.memebattle.repository.*
 import ru.memebattle.route.RoutingV1
-import ru.memebattle.service.FileService
-import ru.memebattle.service.JWTTokenService
-import ru.memebattle.service.PostService
-import ru.memebattle.service.UserService
+import ru.memebattle.service.*
 import java.net.URI
 
 class KodeinBuilder(private val environment: ApplicationEnvironment) {
@@ -55,10 +49,13 @@ class KodeinBuilder(private val environment: ApplicationEnvironment) {
             bind<PostService>() with eagerSingleton { PostService(instance()) }
             bind<FileService>() with eagerSingleton { FileService(instance(tag = UPLOAD_DIR)) }
             bind<UserRepository>() with eagerSingleton { UserRepositoryImpl() }
+            bind<ScheduleRepository>() with eagerSingleton { ScheduleRepositoryImpl() }
+            bind<ScheduleService>() with eagerSingleton { ScheduleService(instance()) }
             bind<UserService>() with eagerSingleton { UserService(instance(), instance(), instance()) }
             bind<RoutingV1>() with eagerSingleton {
                 RoutingV1(
                     instance(tag = UPLOAD_DIR),
+                    instance(),
                     instance(),
                     instance(),
                     instance()

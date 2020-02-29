@@ -52,7 +52,7 @@ dependencies {
     implementation("org.kodein.di:kodein-di-framework-ktor-server-jvm:6.3.3")
     implementation("com.squareup.sqldelight:sqlite-driver:1.2.2")
     implementation("org.apache.tika:tika-parsers:1.11")
-    implementation("org.jetbrains.exposed:exposed:0.12.1")
+    implementation("org.jetbrains.exposed:exposed:0.17.7")
     implementation("com.zaxxer:HikariCP:2.7.8")
     implementation("org.postgresql:postgresql:42.2.2")
     implementation("org.flywaydb:flyway-core:5.2.4")
