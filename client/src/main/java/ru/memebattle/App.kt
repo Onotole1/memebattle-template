@@ -81,3 +81,4 @@ val sharedPreferencesModule = module {
 const val PREFS_TOKEN = "token"
 
 const val ARGS_POST = "post"
+const val ARGS_SEMESTER = "semester"

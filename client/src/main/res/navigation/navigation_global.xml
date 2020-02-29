@@ -30,9 +30,16 @@
         <action
             android:id="@+id/action_mainFragment_to_postFragment"
             app:destination="@id/postFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_semesterFragment"
+            app:destination="@id/semesterFragment" />
     </fragment>
     <fragment
         android:id="@+id/postFragment"
         android:name="ru.memebattle.feature.PostFragment"
         android:label="PostFragment" />
+    <fragment
+        android:id="@+id/semesterFragment"
+        android:name="ru.memebattle.feature.SemesterFragment"
+        android:label="SemesterFragment" />
 </navigation>
