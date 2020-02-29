@@ -22,4 +22,8 @@
         android:name="ru.memebattle.feature.report.ReportFragment"
         android:label="fragment_report"
         tools:layout="@layout/fragment_report" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="ru.memebattle.feature.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

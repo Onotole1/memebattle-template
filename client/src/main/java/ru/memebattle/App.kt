@@ -80,6 +80,9 @@ val sharedPreferencesModule = module {
 
 const val PREFS_TOKEN = "token"
 const val PREFS_TIMETABLE = "timetable"
+const val PREFS_ALARM = "alarm"
+const val PREFS_ALARM_HOUR = "hour"
+const val PREFS_ALARM_MINUTE = "minute"
 
 const val ARGS_POST = "post"
 const val ARGS_SEMESTER = "semester"

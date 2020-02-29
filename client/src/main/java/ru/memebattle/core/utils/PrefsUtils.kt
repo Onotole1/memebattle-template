@@ -6,7 +6,7 @@ import com.google.gson.reflect.TypeToken
 import ru.memebattle.PREFS_TIMETABLE
 import ru.memebattle.common.dto.schdule.ScheduleDayDto
 
-fun SharedPreferences.putString(key: String, value: String) {
+fun SharedPreferences.putString(key: String, value: String?) {
     edit().putString(key, value).apply()
 }
 
