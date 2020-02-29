@@ -12,7 +12,7 @@ import ru.memebattle.auth.BasicAuth
 import ru.memebattle.auth.JwtAuth
 import ru.memebattle.common.dto.AuthenticationRequestDto
 import ru.memebattle.common.dto.PostRequestDto
-import ru.memebattle.common.dto.UserRegisterRequestDto
+import ru.memebattle.common.dto.user.UserRegisterRequestDto
 import ru.memebattle.model.toDto
 import ru.memebattle.service.FileService
 import ru.memebattle.service.PostService
