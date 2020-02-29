@@ -50,7 +50,6 @@ class TimetableFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dateTextView.text = DateFormat.getDateInstance(DateFormat.MEDIUM).format(Date())
         todayButton.setOnClickListener {
             scrollToToday()
         }

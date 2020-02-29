@@ -11,6 +11,8 @@ import kotlinx.android.synthetic.main.fragment_timetable_item.*
 import ru.memebattle.R
 import ru.memebattle.common.dto.schdule.LessonDto
 import ru.memebattle.common.dto.schdule.ScheduleDayDto
+import java.text.DateFormat
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
@@ -26,6 +28,11 @@ class TimetableItemFragment(private val dayTimetable: ScheduleDayDto) : Fragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        dateTextView.text = DateFormat
+            .getDateInstance(DateFormat.MEDIUM)
+            .format(Date(dayTimetable.date))
+
         recyclerViewLessons?.adapter = LessonsAdapter(dayTimetable.lessons)
     }
 
