@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main"
     app:startDestination="@id/newsFragment">
 
@@ -16,4 +17,9 @@
         android:id="@+id/timetableFragment"
         android:name="ru.memebattle.feature.timetable.TimetableFragment"
         android:label="TimetableFragment" />
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="ru.memebattle.feature.report.ReportFragment"
+        android:label="fragment_report"
+        tools:layout="@layout/fragment_report" />
 </navigation>

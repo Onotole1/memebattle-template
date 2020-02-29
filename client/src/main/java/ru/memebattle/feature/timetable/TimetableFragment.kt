@@ -19,7 +19,7 @@ import ru.memebattle.common.dto.schdule.ScheduleDayDto
 import ru.memebattle.core.BaseFragment
 import ru.memebattle.core.api.TimetableApi
 import ru.memebattle.core.utils.putTimetableList
-import java.text.DateFormat
+import ru.memebattle.core.utils.snack
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -67,7 +67,7 @@ class TimetableFragment : BaseFragment() {
                 scrollToToday()
                 todayButton.isEnabled = true
             }, { error ->
-                Snackbar.make(view, error.localizedMessage.toString(), Snackbar.LENGTH_SHORT).show()
+                snack(error.localizedMessage.toString())
                 timetableList = timetableListTest
 
                 // МОКИ

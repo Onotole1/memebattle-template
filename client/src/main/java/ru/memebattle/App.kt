@@ -13,10 +13,7 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.memebattle.core.api.AuthApi
-import ru.memebattle.core.api.NewsApi
-import ru.memebattle.core.api.ProfileApi
-import ru.memebattle.core.api.TimetableApi
+import ru.memebattle.core.api.*
 import ru.memebattle.core.utils.getString
 
 class App : Application() {
@@ -74,6 +71,7 @@ val networkModule = module {
     single { get<Retrofit>().create(NewsApi::class.java) }
     single { get<Retrofit>().create(ProfileApi::class.java) }
     single { get<Retrofit>().create(TimetableApi::class.java) }
+    single { get<Retrofit>().create(ReportApi::class.java) }
 }
 
 val sharedPreferencesModule = module {
