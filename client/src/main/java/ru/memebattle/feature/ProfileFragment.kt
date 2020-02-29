@@ -36,6 +36,8 @@ class ProfileFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 username.text = it.username
+                rate.text = it.average.toString()
+                average.text = it.average.toString()
 
                 progressBar.visibility = View.GONE
             }, {
