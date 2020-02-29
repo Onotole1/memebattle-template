@@ -1,6 +1,6 @@
 package ru.memebattle.common.dto.schdule
 
-data class Lesson(
+data class LessonDto(
     val id: Long,
     val teacherName: String,
     val teacherId: Long,

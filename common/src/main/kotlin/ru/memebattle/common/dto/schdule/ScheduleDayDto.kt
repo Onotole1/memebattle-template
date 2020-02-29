@@ -1,7 +1,7 @@
 package ru.memebattle.common.dto.schdule
 
-data class ScheduleDay(
+data class ScheduleDayDto(
     val id: Long,
     val date: Long,
-    val lessons: List<Lesson>
+    val lessons: List<LessonDto>
 )
