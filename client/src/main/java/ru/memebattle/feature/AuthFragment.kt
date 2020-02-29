@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_auth.*
 import org.koin.android.ext.android.get
@@ -15,11 +15,12 @@ import ru.memebattle.PREFS_TOKEN
 import ru.memebattle.R
 import ru.memebattle.common.dto.AuthenticationRequestDto
 import ru.memebattle.common.dto.AuthenticationResponseDto
+import ru.memebattle.core.BaseFragment
 import ru.memebattle.core.api.AuthApi
 import ru.memebattle.core.utils.putString
 import ru.memebattle.core.utils.toast
 
-class AuthFragment : Fragment() {
+class AuthFragment : BaseFragment() {
 
     private val prefs: SharedPreferences = get()
     private val authApi: AuthApi = get()
@@ -48,6 +49,7 @@ class AuthFragment : Fragment() {
                 }, {
                     onAuthError(it)
                 })
+                .addTo(compositeDisposable)
         }
 
         signUpButton.setOnClickListener {
@@ -63,6 +65,7 @@ class AuthFragment : Fragment() {
                 }, {
                     onAuthError(it)
                 })
+                .addTo(compositeDisposable)
         }
     }
 

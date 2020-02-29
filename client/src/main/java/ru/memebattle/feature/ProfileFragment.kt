@@ -4,25 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_profile.*
 import org.koin.android.ext.android.get
 import ru.memebattle.R
+import ru.memebattle.core.BaseFragment
 import ru.memebattle.core.api.ProfileApi
 import ru.memebattle.core.utils.toast
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : BaseFragment() {
 
-    val profileApi: ProfileApi = get()
+    private val profileApi: ProfileApi = get()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_news, container, false)
+        return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,5 +43,6 @@ class ProfileFragment : Fragment() {
 
                 progressBar.visibility = View.GONE
             })
+            .addTo(compositeDisposable)
     }
 }

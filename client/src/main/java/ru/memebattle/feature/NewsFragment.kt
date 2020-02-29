@@ -5,19 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_news.*
 import org.koin.android.ext.android.get
 import ru.memebattle.ARGS_POST
 import ru.memebattle.R
 import ru.memebattle.common.dto.PostResponseDto
+import ru.memebattle.core.BaseFragment
 import ru.memebattle.core.api.NewsApi
 import ru.memebattle.core.utils.toast
 
-class NewsFragment : Fragment() {
+class NewsFragment : BaseFragment() {
 
     val newsApi: NewsApi = get()
 
@@ -53,5 +54,6 @@ class NewsFragment : Fragment() {
 
                 progressBar.visibility = View.GONE
             })
+            .addTo(compositeDisposable)
     }
 }

@@ -25,7 +25,7 @@ class NewsAdapter(
     override fun getItemCount(): Int = posts.size
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        val post = posts[position] ?: return
+        val post = posts[position]
 
         holder.itemView.apply {
             content.text = post.content
