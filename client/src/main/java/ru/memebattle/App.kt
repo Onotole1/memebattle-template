@@ -16,6 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import ru.memebattle.core.api.AuthApi
 import ru.memebattle.core.api.NewsApi
 import ru.memebattle.core.api.ProfileApi
+import ru.memebattle.core.api.TimetableApi
 import ru.memebattle.core.utils.getString
 
 class App : Application() {
@@ -72,6 +73,7 @@ val networkModule = module {
     single { get<Retrofit>().create(AuthApi::class.java) }
     single { get<Retrofit>().create(NewsApi::class.java) }
     single { get<Retrofit>().create(ProfileApi::class.java) }
+    single { get<Retrofit>().create(TimetableApi::class.java) }
 }
 
 val sharedPreferencesModule = module {
@@ -79,6 +81,7 @@ val sharedPreferencesModule = module {
 }
 
 const val PREFS_TOKEN = "token"
+const val PREFS_TIMETABLE = "timetable"
 
 const val ARGS_POST = "post"
 const val ARGS_SEMESTER = "semester"

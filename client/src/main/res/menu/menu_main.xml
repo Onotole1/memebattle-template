@@ -7,7 +7,7 @@
         android:title="Новости" />
 
     <item
-        android:id="@+id/tableFragment"
+        android:id="@+id/timetableFragment"
         android:icon="@drawable/ic_table"
         android:title="Расписание" />
 
