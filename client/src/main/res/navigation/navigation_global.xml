@@ -10,10 +10,12 @@
         android:label="SplashFragment" >
         <action
             android:id="@+id/action_splashFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@+id/navigation_global" />
         <action
             android:id="@+id/action_splashFragment_to_authFragment"
-            app:destination="@id/authFragment" />
+            app:destination="@id/authFragment"
+            app:popUpTo="@+id/navigation_global" />
     </fragment>
     <fragment
         android:id="@+id/authFragment"
@@ -21,7 +23,8 @@
         android:label="AuthFragment" >
         <action
             android:id="@+id/action_authFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@+id/navigation_global" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
@@ -33,6 +36,10 @@
         <action
             android:id="@+id/action_mainFragment_to_semesterFragment"
             app:destination="@id/semesterFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_authFragment"
+            app:destination="@id/authFragment"
+            app:popUpTo="@+id/navigation_global" />
     </fragment>
     <fragment
         android:id="@+id/postFragment"

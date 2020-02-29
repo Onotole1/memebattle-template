@@ -8,13 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_settings.*
 import org.koin.android.ext.android.get
-import ru.memebattle.PREFS_ALARM
-import ru.memebattle.PREFS_ALARM_HOUR
-import ru.memebattle.PREFS_ALARM_MINUTE
-import ru.memebattle.R
+import ru.memebattle.*
 import ru.memebattle.core.utils.getTimetableList
+import ru.memebattle.core.utils.putString
 import java.util.*
 
 class SettingsFragment : Fragment() {
@@ -37,6 +36,12 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        signOut.setOnClickListener {
+            sharedPreferences.putString(PREFS_TOKEN, null)
+            Navigation.findNavController(requireActivity(), R.id.host_global)
+                .navigate(R.id.action_mainFragment_to_authFragment)
+        }
 
         val scheduleDays = sharedPreferences.getTimetableList()
 
