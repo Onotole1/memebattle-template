@@ -3,6 +3,7 @@ package ru.memebattle
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import com.bumptech.glide.annotation.GlideModule
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -72,6 +73,7 @@ val networkModule = module {
     single { get<Retrofit>().create(ProfileApi::class.java) }
     single { get<Retrofit>().create(TimetableApi::class.java) }
     single { get<Retrofit>().create(ReportApi::class.java) }
+    single { get<Retrofit>().create(GameApi::class.java) }
 }
 
 val sharedPreferencesModule = module {

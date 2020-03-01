@@ -40,6 +40,9 @@
             android:id="@+id/action_mainFragment_to_authFragment"
             app:destination="@id/authFragment"
             app:popUpTo="@+id/navigation_global" />
+        <action
+            android:id="@+id/action_mainFragment_to_memeBattleFragment"
+            app:destination="@id/memeBattleFragment" />
     </fragment>
     <fragment
         android:id="@+id/postFragment"
@@ -49,4 +52,8 @@
         android:id="@+id/semesterFragment"
         android:name="ru.memebattle.feature.SemesterFragment"
         android:label="SemesterFragment" />
+    <fragment
+        android:id="@+id/memeBattleFragment"
+        android:name="ru.memebattle.feature.MemeBattleFragment"
+        android:label="MemeBattleFragment" />
 </navigation>
