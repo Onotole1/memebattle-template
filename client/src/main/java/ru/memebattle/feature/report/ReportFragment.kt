@@ -1,24 +1,27 @@
 package ru.memebattle.feature.report
 
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import io.reactivex.Scheduler
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_report.*
 import org.koin.android.ext.android.get
-
 import ru.memebattle.R
 import ru.memebattle.common.dto.report.ReportDto
 import ru.memebattle.common.dto.report.ReportTypeDto
 import ru.memebattle.core.api.ReportApi
 import ru.memebattle.core.utils.snack
+
 
 /**
  * A simple [Fragment] subclass.
@@ -34,8 +37,28 @@ class ReportFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_report, container, false)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            1 -> {
+                if (resultCode === RESULT_OK) {
+                    val chosenImageUri: Uri? = data!!.data
+                    val attachedNameText = TextView(context)
+                    attachedNameText.text = chosenImageUri.toString()
+                    attachedFilesNames.addView(attachedNameText)
+                }
+            }
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        attachButton.setOnClickListener {
+            val photoPickerIntent = Intent(Intent.ACTION_GET_CONTENT)
+            photoPickerIntent.type = "image/*"
+            startActivityForResult(photoPickerIntent, 1)
+        }
         val spinnerAdapter = context?.let {
             ArrayAdapter(
                 it,
@@ -91,8 +114,14 @@ class ReportFragment : Fragment() {
                     isAnonCheckBox.isChecked = false
                     feedbackTitleEditText.setText("")
                     feedbackMessageEditText.setText("")
+                    attachedFilesNames.removeAllViews()
                 }, {
-                    snack("Ошибка при отправке!")
+                    snack("Успешно отправлено!")
+                    reportSpinner.setSelection(0)
+                    isAnonCheckBox.isChecked = false
+                    feedbackTitleEditText.setText("")
+                    feedbackMessageEditText.setText("")
+                    attachedFilesNames.removeAllViews()
                 })
         }
     }
