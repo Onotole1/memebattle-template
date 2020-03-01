@@ -10,7 +10,9 @@ import ru.memebattle.model.vk.model.*
 class MemeService {
 
     private var currentMemes: List<String> = emptyList()
-    private var currentLikes: MutableList<Int> = mutableListOf()
+    private var currentLikes: MutableList<Int> = mutableListOf(
+        0, 0
+    )
     private var state: String = "start"
     private val mutex = Mutex()
 
@@ -65,10 +67,13 @@ class MemeService {
 
                     mutex.withLock {
                         state = "result"
-
                     }
 
                     delay(5000)
+
+                    mutex.withLock {
+                        currentLikes = mutableListOf(0, 0)
+                    }
                 }
             }
         }
