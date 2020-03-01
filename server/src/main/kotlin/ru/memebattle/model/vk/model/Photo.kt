@@ -18,3 +18,8 @@ data class Photo(
     @SerializedName("user_id")
     val userId: Int? = null
 )
+
+fun List<Size?>.getMaxImage(): String? =
+    maxBy {
+        it?.height ?: 0
+    }?.url

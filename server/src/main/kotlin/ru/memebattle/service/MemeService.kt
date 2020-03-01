@@ -42,7 +42,7 @@ class MemeService {
 
                 val pairs = mutex.withLock {
                     val photos = memes.response?.items?.map {
-                        it.attachments?.firstOrNull()?.photo?.sizes?.first()?.url
+                        it.attachments?.firstOrNull()?.photo?.sizes?.getMaxImage()
                     }
 
                     val pairs: MutableList<Pair<String, String>> = mutableListOf()
