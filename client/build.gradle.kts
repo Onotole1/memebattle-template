@@ -60,5 +60,6 @@ dependencies {
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("com.google.firebase:firebase-core:17.2.3")
     implementation("com.google.firebase:firebase-messaging:20.1.1")
+    implementation("com.github.nkzawa:socket.io-client:0.6.0")
     implementation(project(":common"))
 }
