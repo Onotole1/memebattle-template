@@ -15,7 +15,7 @@
         android:text="Обратная связь"
         android:textSize="24sp" />
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="16dp"
@@ -66,13 +66,38 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp" />
 
+            <Button
+                android:id="@+id/attachButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="16dp"
+                android:baselineAligned="false"
+                android:drawableRight="@drawable/ic_attach_file"
+                android:text="Прикрепить файлы" />
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/attachedFilesNames"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
             <CheckBox
                 android:id="@+id/isAnonCheckBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Отправить анонимно" />
+
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <Button
         android:id="@+id/sendFeedbackButton"
