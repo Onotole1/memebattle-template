@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-android-extensions")
     id("kotlin-kapt")
+    id("com.google.gms.google-services")
 }
 
 repositories {
@@ -57,5 +58,7 @@ dependencies {
     implementation("org.koin:koin-android-viewmodel:2.0.1")
     implementation("org.koin:koin-androidx-scope:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation("com.google.firebase:firebase-core:17.2.3")
+    implementation("com.google.firebase:firebase-messaging:20.1.1")
     implementation(project(":common"))
 }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "239372530417",
+    "firebase_url": "https://myphystech-56678.firebaseio.com",
+    "project_id": "myphystech-56678",
+    "storage_bucket": "myphystech-56678.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239372530417:android:4f62f68762644dfa862f50",
+        "android_client_info": {
+          "package_name": "ru.memebattle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "239372530417-n105trfj3i1kggqqt9hqmn30gqgl9ueh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBl4uWFJxfIEN7SrC_3_HBZ6cmyVjjxvKM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "239372530417-n105trfj3i1kggqqt9hqmn30gqgl9ueh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
