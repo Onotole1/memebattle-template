@@ -10,7 +10,8 @@ import io.ktor.websocket.webSocket
 class RoutingV1 {
     fun setup(configuration: Routing) {
         with(configuration) {
-            webSocket("/api/v1/") {
+            webSocket(path = "/api/v1/", protocol = "https") {
+
                 for (frame in incoming) {
                     when (frame) {
                         is Frame.Text -> {
