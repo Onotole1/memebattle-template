@@ -72,6 +72,7 @@ val networkModule = module {
     single { get<Retrofit>().create(ProfileApi::class.java) }
     single { get<Retrofit>().create(TimetableApi::class.java) }
     single { get<Retrofit>().create(ReportApi::class.java) }
+    single { get<Retrofit>().create(GameApi::class.java) }
 }
 
 val sharedPreferencesModule = module {

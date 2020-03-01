@@ -5,29 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.github.nkzawa.emitter.Emitter
-import com.github.nkzawa.socketio.client.IO
-import com.github.nkzawa.socketio.client.Socket
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_memebattle.*
-import org.json.JSONObject
+import org.koin.android.ext.android.get
 import ru.memebattle.R
-
+import ru.memebattle.core.api.GameApi
 
 class MemeBattleFragment : Fragment() {
 
-    private lateinit var socket: Socket
-
-    private val memesListener = Emitter.Listener {
-        val data = it[0] as JSONObject
-
-
-    }
-
-    private val resultListener = Emitter.Listener {
-        val data = it[0] as JSONObject
-
-
-    }
+    private val gameApi: GameApi = get()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,24 +27,26 @@ class MemeBattleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        socket = IO.socket("http://chat.socket.io")
-        socket.connect()
-
         image1.setOnClickListener {
-            socket.emit("like", "1")
+
         }
 
         image2.setOnClickListener {
-            socket.emit("like", "2")
+
         }
 
-        socket.on("memes", memesListener)
-        socket.on("result", resultListener)
-    }
+        button.setOnClickListener {
 
-    override fun onStop() {
-        super.onStop()
+        }
 
-        socket.disconnect()
+        gameApi.getState()
+            .repeat(500)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+
+            }, {
+
+            })
     }
 }
