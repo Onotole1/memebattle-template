@@ -29,17 +29,16 @@ class SemesterFragment : Fragment() {
         semesterName.text = semester.name
 
         val mockSubjects = listOf(
-            SemesterSubjectDto(0, 0.0f, 0),
-            SemesterSubjectDto(0, 0.0f, 0),
-            SemesterSubjectDto(0, 0.0f, 0),
-            SemesterSubjectDto(0, 0.0f, 0),
-            SemesterSubjectDto(0, 0.0f, 0),
-            SemesterSubjectDto(0, 0.0f, 0),
-            SemesterSubjectDto(0, 0.0f, 0),
-            SemesterSubjectDto(0, 0.0f, 0),
-            SemesterSubjectDto(0, 0.0f, 0),
-            SemesterSubjectDto(0, 0.0f, 0),
-            SemesterSubjectDto(0, 0.0f, 0)
+            SemesterSubjectDto(0, 70.0f, 0),
+            SemesterSubjectDto(1, 90.0f, 0),
+            SemesterSubjectDto(2, 70.0f, 0),
+            SemesterSubjectDto(3, 90.0f, 0),
+            SemesterSubjectDto(4, 70.0f, 0),
+            SemesterSubjectDto(5, 80.0f, 0),
+            SemesterSubjectDto(6, 80.0f, 0),
+            SemesterSubjectDto(7, 70.0f, 0),
+            SemesterSubjectDto(8, 90.0f, 0),
+            SemesterSubjectDto(9, 80.0f, 0)
         )
 
         recyclerViewSubjects?.adapter = SubjectsAdapter(mockSubjects)

@@ -47,19 +47,21 @@ class ProfileFragment : BaseFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 username.text = it.username
-                rate.text = it.average.toString()
-                average.text = it.average.toString()
+
+                rate.text = 10.toString()
+                average.text = 80.203.toString()
 
                 val mockSemesters = listOf(
                     SemesterDto(0, "Semester 1", listOf()),
-                    SemesterDto(0, "Semester 2", listOf()),
-                    SemesterDto(0, "Semester 3", listOf()),
-                    SemesterDto(0, "Semester 4", listOf()),
-                    SemesterDto(0, "Semester 5", listOf()),
-                    SemesterDto(0, "Semester 6", listOf())
+                    SemesterDto(1, "Semester 2", listOf()),
+                    SemesterDto(2, "Semester 3", listOf()),
+                    SemesterDto(3, "Semester 4", listOf()),
+                    SemesterDto(4, "Semester 5", listOf()),
+                    SemesterDto(5, "Semester 6", listOf())
                 )
 
-                recyclerViewSemesters?.adapter = SemestersAdapter(mockSemesters, onItemClickListener)
+                recyclerViewSemesters?.adapter =
+                    SemestersAdapter(mockSemesters, onItemClickListener)
 
                 progressBar.visibility = View.GONE
             }, {
