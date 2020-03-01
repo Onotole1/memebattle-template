@@ -13,21 +13,19 @@ import ru.memebattle.auth.BasicAuth
 import ru.memebattle.auth.JwtAuth
 import ru.memebattle.common.dto.AuthenticationRequestDto
 import ru.memebattle.common.dto.PostRequestDto
-import ru.memebattle.common.dto.schdule.ScheduleDayDto
 import ru.memebattle.common.dto.schdule.ScheduleDayRequestDto
 import ru.memebattle.common.dto.user.UserRegisterRequestDto
 import ru.memebattle.model.toDto
-import ru.memebattle.service.FileService
-import ru.memebattle.service.PostService
-import ru.memebattle.service.ScheduleService
-import ru.memebattle.service.UserService
+import ru.memebattle.common.dto.game.MemeRequest
+import ru.memebattle.service.*
 
 class RoutingV1(
     private val staticPath: String,
     private val postService: PostService,
     private val fileService: FileService,
     private val userService: UserService,
-    private val scheduleService: ScheduleService
+    private val scheduleService: ScheduleService,
+    private val memeService: MemeService
 ) {
     fun setup(configuration: Routing) {
         with(configuration) {
@@ -92,6 +90,18 @@ class RoutingV1(
                             val input = call.receive<ScheduleDayRequestDto>()
                             val response = scheduleService.insert(input)
                             call.respond(HttpStatusCode.OK)
+                        }
+                    }
+
+                    route("/game") {
+                        get {
+                            val response = memeService.getCurrentState()
+                            call.respond(response)
+                        }
+                        post {
+                            val input = call.receive<MemeRequest>()
+                            val response = memeService.rateMeme(input.number)
+                            call.respond(response)
                         }
                     }
                 }

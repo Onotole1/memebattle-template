@@ -63,7 +63,12 @@ class UserService(
                 throw UserExistsException("User exists!")
             }
 
-            repo.save(UserModel(username = username, password = passwordEncoder.encode(password)))
+            repo.save(
+                UserModel(
+                    username = username,
+                    password = passwordEncoder.encode(password)
+                )
+            )
 
             val model = requireNotNull(repo.getByUsername(username))
 
