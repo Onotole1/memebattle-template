@@ -37,8 +37,19 @@ class AuthFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         signInButton.setOnClickListener {
-            val authenticationRequestDto = getAuthDto() ?: return@setOnClickListener
+            emailTextInputLayout.isErrorEnabled = false
+            passwordTextInputLayout.isErrorEnabled = false
 
+            if (emailInput.text.toString().isEmpty()) {
+                emailTextInputLayout.error = "Заполните поле"
+                return@setOnClickListener
+            }
+            if (passwordInput.text.toString().isEmpty()) {
+                passwordTextInputLayout.error = "Заполните поле"
+                return@setOnClickListener
+            }
+
+            val authenticationRequestDto = getAuthDto() ?: return@setOnClickListener
             prepareAuth()
 
             authApi.signIn(authenticationRequestDto)
