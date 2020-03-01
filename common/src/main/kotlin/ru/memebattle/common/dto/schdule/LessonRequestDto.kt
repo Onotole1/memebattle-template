@@ -5,6 +5,6 @@ data class LessonRequestDto(
     val teacherName: String,
     val teacherId: Long,
     val classRoom: String,
-    val timeStart: Long,
-    val timeEnd: Long
+    val timeStart: String,
+    val timeEnd: String
 )

@@ -32,12 +32,13 @@ class UserRepositoryImpl : UserRepository {
             }.singleOrNull()?.toUser()
         }
 
-    override suspend fun save(item: UserModel): Unit =
+    override suspend fun save(item: UserModel) {
         dbQuery {
             Users.insert { insertStatement ->
                 insertStatement[password] = item.password
                 insertStatement[username] = item.username
             }
         }
+    }
 }
 
