@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.google.android.material.snackbar.Snackbar
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
@@ -78,24 +77,23 @@ class TimetableFragment : BaseFragment() {
                 timetableList = ArrayList(it)
 
                 prefs.putTimetableList(timetableList)
-                val pagerAdapter =
-                    TimetablePagerAdapter(this, timetableListTest.size, timetableList)
+                val pagerAdapter = TimetablePagerAdapter(this, timetableList)
                 viewPager.adapter = pagerAdapter
                 progressBar.visibility = View.GONE
                 scrollToToday()
                 todayButton.isEnabled = true
             }, { error ->
                 snack(error.localizedMessage.toString())
-                timetableList = timetableListTest
+                /*timetableList = timetableListTest
 
                 // МОКИ
                 prefs.putTimetableList(timetableList)
                 val pagerAdapter =
                     TimetablePagerAdapter(this, timetableListTest.size, timetableList)
-                viewPager.adapter = pagerAdapter
-                progressBar.visibility = View.GONE
+                viewPager.adapter = pagerAdapter*/
+                progressBar.visibility = View.GONE/*
                 scrollToToday()
-                todayButton.isEnabled = true
+                todayButton.isEnabled = true*/
 
             }).addTo(compositeDisposable)
     }

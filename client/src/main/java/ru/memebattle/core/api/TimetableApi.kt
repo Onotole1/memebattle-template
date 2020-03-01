@@ -6,6 +6,6 @@ import ru.memebattle.common.dto.schdule.ScheduleDayDto
 
 interface TimetableApi {
 
-    @GET("timetable")
+    @GET("schedule")
     fun getTimetableList(): Single<List<ScheduleDayDto>>
 }
