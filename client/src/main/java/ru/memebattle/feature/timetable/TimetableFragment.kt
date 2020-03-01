@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.google.android.material.snackbar.Snackbar
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
@@ -33,7 +32,17 @@ class TimetableFragment : BaseFragment() {
     private var timetableList = arrayListOf<ScheduleDayDto>()
 
     private val testLessonsList = arrayListOf<LessonDto>().apply {
-        for (i in 1..8) add(LessonDto(i.toLong(), "xuy", i.toLong(), "xuy", i.toLong(), i.toLong()))
+        for (i in 1..8) add(
+            LessonDto(
+                i.toLong(),
+                "xuy",
+                "хуйло",
+                i.toLong(),
+                "xuy",
+                i.toLong(),
+                i.toLong()
+            )
+        )
     }
 
     private var timetableListTest = arrayListOf<ScheduleDayDto>().apply {
@@ -53,6 +62,14 @@ class TimetableFragment : BaseFragment() {
         todayButton.setOnClickListener {
             scrollToToday()
         }
+        refreshButton.setOnClickListener {
+            request()
+        }
+        request()
+    }
+
+    private fun request() {
+        progressBar.visibility = View.VISIBLE
         timetableApi.getTimetableList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -60,24 +77,23 @@ class TimetableFragment : BaseFragment() {
                 timetableList = ArrayList(it)
 
                 prefs.putTimetableList(timetableList)
-                val pagerAdapter =
-                    TimetablePagerAdapter(this, timetableListTest.size, timetableList)
+                val pagerAdapter = TimetablePagerAdapter(this, timetableList)
                 viewPager.adapter = pagerAdapter
                 progressBar.visibility = View.GONE
                 scrollToToday()
                 todayButton.isEnabled = true
             }, { error ->
                 snack(error.localizedMessage.toString())
-                timetableList = timetableListTest
+                /*timetableList = timetableListTest
 
                 // МОКИ
                 prefs.putTimetableList(timetableList)
                 val pagerAdapter =
                     TimetablePagerAdapter(this, timetableListTest.size, timetableList)
-                viewPager.adapter = pagerAdapter
-                progressBar.visibility = View.GONE
+                viewPager.adapter = pagerAdapter*/
+                progressBar.visibility = View.GONE/*
                 scrollToToday()
-                todayButton.isEnabled = true
+                todayButton.isEnabled = true*/
 
             }).addTo(compositeDisposable)
     }
