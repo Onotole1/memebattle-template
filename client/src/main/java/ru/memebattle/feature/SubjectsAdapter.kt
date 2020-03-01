@@ -27,9 +27,22 @@ class SubjectsAdapter(
         val subject = subjects[position]
 
         holder.itemView.apply {
-            subjectName.text = subject.id.toString()
+            val subjectNameText = when (subject.id) {
+                0L -> "Вычислительная математика"
+                1L -> "Дискретные преобразования сигналов"
+                2L -> "Параллельное программирование"
+                3L -> "Уравнения математической физики"
+                4L -> "Основы современной физики"
+                5L -> "Вычислительная математика"
+                6L -> "Квантовая механика"
+                7L -> "Физкультура"
+                8L -> "Физика твердого тела"
+                9L -> "Прочность ЛА"
+                else -> ""
+            }
+            subjectName.text = subjectNameText
             average.text = subject.average.toString()
-            rate.text = subject.position.toString()
+            rate.text = 10.toString()
         }
     }
 
