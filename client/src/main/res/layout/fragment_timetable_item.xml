@@ -9,9 +9,8 @@
         android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="left"
         android:layout_margin="16dp"
-        android:text="29:02:2020\n\nСуббота"
         android:textSize="21sp" />
 
     <androidx.recyclerview.widget.RecyclerView

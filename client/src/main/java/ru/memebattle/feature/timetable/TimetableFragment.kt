@@ -33,7 +33,17 @@ class TimetableFragment : BaseFragment() {
     private var timetableList = arrayListOf<ScheduleDayDto>()
 
     private val testLessonsList = arrayListOf<LessonDto>().apply {
-        for (i in 1..8) add(LessonDto(i.toLong(), "xuy", i.toLong(), "xuy", i.toLong(), i.toLong()))
+        for (i in 1..8) add(
+            LessonDto(
+                i.toLong(),
+                "xuy",
+                "хуйло",
+                i.toLong(),
+                "xuy",
+                i.toLong(),
+                i.toLong()
+            )
+        )
     }
 
     private var timetableListTest = arrayListOf<ScheduleDayDto>().apply {
@@ -53,6 +63,14 @@ class TimetableFragment : BaseFragment() {
         todayButton.setOnClickListener {
             scrollToToday()
         }
+        refreshButton.setOnClickListener {
+            request()
+        }
+        request()
+    }
+
+    private fun request() {
+        progressBar.visibility = View.VISIBLE
         timetableApi.getTimetableList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
