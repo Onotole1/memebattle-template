@@ -62,5 +62,7 @@ dependencies {
     implementation("com.google.firebase:firebase-messaging:20.1.1")
     implementation("com.github.nkzawa:socket.io-client:0.6.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3")
+    implementation("com.github.bumptech.glide:glide:4.4.0")
+    kapt("com.github.bumptech.glide:compiler:4.4.0")
     implementation(project(":common"))
 }
