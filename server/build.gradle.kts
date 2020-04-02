@@ -59,6 +59,7 @@ dependencies {
     testImplementation("io.ktor:ktor-server-tests:1.2.4")
     testImplementation("com.jayway.jsonpath:json-path:2.4.0")
     testImplementation("org.junit.jupiter:junit-jupiter:5.6.0")
+    testImplementation("org.testcontainers:postgresql:1.13.0")
     implementation(project(":common"))
 }
 

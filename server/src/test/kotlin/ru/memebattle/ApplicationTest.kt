@@ -11,6 +11,7 @@ import io.ktor.server.testing.withTestApplication
 import kotlinx.coroutines.runBlocking
 import kotlinx.io.streams.asInput
 import org.junit.jupiter.api.Test
+import org.testcontainers.containers.PostgreSQLContainer
 import java.nio.file.Files
 import java.nio.file.Paths
 import kotlin.test.assertEquals
@@ -18,13 +19,19 @@ import kotlin.test.assertTrue
 
 @Suppress("EXPERIMENTAL_API_USAGE")
 class ApplicationTest {
+    class AppPostgreSQLContainer : PostgreSQLContainer<AppPostgreSQLContainer>("postgres:latest")
+
     private val jsonContentType = ContentType.Application.Json.withCharset(Charsets.UTF_8)
     private val multipartBoundary = "***blob***"
     private val multipartContentType =
         ContentType.MultiPart.FormData.withParameter("boundary", multipartBoundary).toString()
     private val uploadPath = Files.createTempDirectory("test").toString()
+    private val postgresContainer = AppPostgreSQLContainer().apply {
+        start()
+    }
     private val configure: Application.() -> Unit = {
         (environment.config as MapApplicationConfig).apply {
+            put("db.jdbcUrl", "postgres://${postgresContainer.username}:${postgresContainer.password}@${postgresContainer.containerIpAddress}:${postgresContainer.getMappedPort(PostgreSQLContainer.POSTGRESQL_PORT)}/${postgresContainer.databaseName}")
             put("memebattle.upload.dir", uploadPath)
         }
         module()
