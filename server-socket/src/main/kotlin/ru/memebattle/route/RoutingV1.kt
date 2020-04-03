@@ -10,7 +10,7 @@ import io.ktor.websocket.webSocket
 class RoutingV1 {
     fun setup(configuration: Routing) {
         with(configuration) {
-            webSocket(path = "/api/v1/", protocol = "http") {
+            webSocket(path = "/api/v1/") {
 
                 for (frame in incoming) {
                     when (frame) {
